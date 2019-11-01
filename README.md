@@ -28,14 +28,26 @@ This is an API to provide information on state and national parks. It provides d
   }
 }
 ```
-* In a new Command Terminal route to the project folder of the local repository and run the migration command:
+* In a new Command Terminal route to the project folder of the local repository and run the restore command and then the migration command:
 ```
+dotnet restore
+...
 dotnet ef database update
 ```
 * Confirm successful migration
-* Open a new Command Terminal and route to the main project folder of the local repository (//Desktop/ParksApi.Solution/ParksApi)
-* Enter command 'dotnet run' into the Terminal
-* Open a new browser and enter 'http://localhost:5000/'
+* Enter the run command into the open Command Terminal
+```
+dotnet run
+```
+* Open a new browser and enter 'http://localhost:5000/swagger/index.html'
+
+## Useage Example
+* Complete full setup/installation instructions
+* In Swagger Home page, select a dropdown of choice (e.g. Parks)
+![picture]("img/swaggerHome.png")
+* Click on bar with the action name you want to try out
+* Click on the "Try it out!" button on the top right of the just-opened section
+* Enter any required parameters and then click the blue "Execute" button just below the input(s) section
 
 ## Known Bugs
 
@@ -43,7 +55,7 @@ None known at this time.
 
 ## Support and contact details
 
-Find a bug?! Add an issue to the GitHub Repo.
+Find a bug?! Add an issue to the GitHub Repo.<br>
 Repo: https://github.com/christinelfrank16/ParksApi.Solution
 
 Other Contact<br>
@@ -57,6 +69,13 @@ LinkedIn: https://www.linkedin.com/in/christine-frank/
     * Get parks
     * Update existing parks
     * Remove parks
+* Additional API functionality includes:
+    * Create, get and remove park addresses and fees
+    * Create, get and remove animals
+    * Add and remove animals to/from parks
+    * Search parks by name, designation and/or state
+    * Search park animals by common name, type (e.g. mammal), or diet
+    * Search all animals by common name, type (e.g. mammal), or diet
 * API hosts Swagger documentation
 
 ## Technologies Used
