@@ -51,7 +51,7 @@ namespace ParksApi.Controllers
 
         // POST api/parks/5/animals
         [HttpPost("{parkId:int}/animals")]
-        public void AddAnimal([FromRoute] int parkId, [FromBody] Animal animal)
+        public void AddSighting([FromRoute] int parkId, [FromBody] Animal animal)
         {
             Animal dbAnimal = _db.Animals.FirstOrDefault(animalEntry => animalEntry.AnimalId == animal.AnimalId);
             if(dbAnimal == null)
