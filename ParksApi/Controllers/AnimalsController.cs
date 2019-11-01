@@ -26,6 +26,34 @@ namespace ParksApi.Controllers
             return _db.Animals.ToList();
         }
 
+        // GET api/animals/search
+        [HttpGet("search")]
+        public ActionResult<IEnumerable<Animal>> SearchAnimals(string commonname, string type, string diet)
+        {
+            var query = _db.Animals.AsQueryable();
+            if (commonname != null)
+            {
+                if (commonname.Contains(" "))
+                {
+                    List<string> searchterms = commonname.ToLower().Split(" ").ToList();
+                    query = query.Where(animal => animal.CommonName.ToLower().Split(" ", default).ToList().Any(namevalue => searchterms.Contains(namevalue)));
+                }
+                else
+                {
+                    query = query.Where(animal => animal.CommonName.ToLower().Contains(commonname.ToLower()));
+                }
+            }
+            if (type != null)
+            {
+                query = query.Where(animal => animal.Type.ToLower().Contains(type.ToLower()));
+            }
+            if (diet != null)
+            {
+                query = query.Where(animal => animal.Diet.ToLower().Contains(diet.ToLower()));
+            }
+            return query.ToList();
+        }
+
         // GET api/animals/5
         [HttpGet("{animalId:int}")]
         public ActionResult<Animal> Get(int animalId)
