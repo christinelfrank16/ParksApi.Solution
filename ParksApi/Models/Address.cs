@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace ParksApi.Models
 {
     public class Address
@@ -11,5 +13,7 @@ namespace ParksApi.Models
         public string State { get; set; }
         public string Zipcode { get; set; }
         public string Type { get; set; }
+        [JsonIgnore]
+        public virtual Park Park { get; set; }
     }
 }

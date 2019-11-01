@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
+
 
 namespace ParksApi.Models
 {
@@ -8,7 +10,8 @@ namespace ParksApi.Models
         public string CommonName { get; set; }
         public string ScientificName { get; set; }
         public string Description { get; set; }
-        public ICollection<LocalWildlife> Parks { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<LocalWildlife> Parks { get; set; }
 
         public Animal()
         {

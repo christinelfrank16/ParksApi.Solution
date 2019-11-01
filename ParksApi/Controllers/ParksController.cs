@@ -35,7 +35,7 @@ namespace ParksApi.Controllers
 
         //GET api/parks/5/animals
         [HttpGet("{id:int}/animals")]
-        public ActionResult<IEnumerable<Animal>> GetWildlife(int id)
+        public ActionResult<IEnumerable<Animal>> GetWildlife([FromRoute] int id)
         {
             Park thisPark = _db.Parks.Include(park => park.Animals).ThenInclude(wildlife => wildlife.Animal).FirstOrDefault(park => park.ParkId == id);
             return thisPark.Animals.Select(wl => wl.Animal).ToList();
@@ -46,6 +46,19 @@ namespace ParksApi.Controllers
         public void Post([FromBody] Park park)
         {
             _db.Parks.Add(park);
+            _db.SaveChanges();
+        }
+
+        // POST api/parks/5/animals
+        [HttpPost("{parkId:int}/animals")]
+        public void AddAnimal([FromRoute] int parkId, [FromBody] Animal animal)
+        {
+            Animal dbAnimal = _db.Animals.FirstOrDefault(animalEntry => animalEntry.AnimalId == animal.AnimalId);
+            if(dbAnimal == null)
+            {
+                _db.Animals.Add(animal);
+            }
+            _db.LocalWildlife.Add(new LocalWildlife(){ ParkId = parkId, AnimalId = animal.AnimalId });
             _db.SaveChanges();
         }
 
