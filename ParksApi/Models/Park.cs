@@ -7,6 +7,7 @@ namespace ParksApi.Models
     {
         public int ParkId { get; set; }
         public string Name { get; set; }
+        public string Designation { get; set; }
         public string Description { get; set; }
         public string OperatingHours { get; set; }
         public string ParkUrl { get; set; }

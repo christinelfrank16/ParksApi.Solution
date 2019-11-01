@@ -10,6 +10,8 @@ namespace ParksApi.Models
         public string CommonName { get; set; }
         public string ScientificName { get; set; }
         public string Description { get; set; }
+        public string Diet { get; set; }
+        public string Type { get; set; }
         [JsonIgnore]
         public virtual ICollection<LocalWildlife> Parks { get; set; }
 
