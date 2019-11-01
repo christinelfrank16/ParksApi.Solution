@@ -30,7 +30,8 @@ namespace ParksApi.Models
                 .HasData(
                     new Park{ ParkId = 1, Name = "Yellowstone", Designation = "National Park", Description = "A large seasonal park with fountains, breath-taking views and open spaces to explore!", OperatingHours = "24-hrs All Days", ParkUrl = "https://www.nps.gov/yell/index.htm"},
                     new Park { ParkId = 2, Name = "Zion National Park", Designation = "National Park", Description = "Known for its massive sandstone cliffs of cream, pink and red contrasting agains a bright blue sky, it is an area full of history about native people and pioneers", OperatingHours = "24-hrs All Days", ParkUrl = "https://www.nps.gov/zion/index.htm" },
-                    new Park { ParkId = 3, Name = "Tryon Creek State National Area", Designation = "State Park", Description = "A well wooded park with many trails used for horse-back riding, hiking, running and walking", OperatingHours = "7am-5pm, changes seasonally", ParkUrl = "https://oregonstateparks.org/index.cfm?do=parkPage.dsp_parkPage&parkId=103" }
+                    new Park { ParkId = 3, Name = "Tryon Creek State National Area", Designation = "State Park", Description = "A well wooded park with many trails used for horse-back riding, hiking, running and walking", OperatingHours = "7am-5pm, changes seasonally", ParkUrl = "https://oregonstateparks.org/index.cfm?do=parkPage.dsp_parkPage&parkId=103" },
+                    new Park { ParkId = 4, Name = "Acadia National Park", Designation = "National Park", Description = "One of the top 10 most-visited parks in the United States, it has the highest rocky headlands along the Atlantic coast", OperatingHours = "24-hrs All Days", ParkUrl = "https://www.nps.gov/acad/index.htm" }
                 );
 
             builder.Entity<Address>()
@@ -39,7 +40,8 @@ namespace ParksApi.Models
                 new Address { AddressId = 2, ParkId = 1, Line1 = "Chamber of Commerce of West Yellowstone", Line2 = "30 Yellowstone Avenue", Line3 = "West Yellowstone, MT 59758", City = "West Yellowstone", State = "MT", Zipcode = "59758", Type = "Physical Address" },
                 new Address { AddressId = 3, ParkId = 1, Line1 = "PO Box 168", Line2 = "Yellowstone National Park, WY 82190", Line3 = "", City = "Yellowstone National Park", State = "WY", Zipcode = "82190", Type = "Mailing Address" },
                 new Address { AddressId = 4, ParkId = 2, Line1 = "1 Zion Park Blvd", Line2 = "State Route 9", Line3 = "Springdale, UT 84767", City = "Springdale", State = "UT", Zipcode = "84767", Type = "Physical Address" },
-                new Address { AddressId = 5, ParkId = 3, Line1 = "11321 SW Terwilliger Blvd", Line2 = "Portland, OR 97219", Line3 = "", City = "Portland", State = "OR", Zipcode = "97219", Type = "Physical Address" }
+                new Address { AddressId = 5, ParkId = 3, Line1 = "11321 SW Terwilliger Blvd", Line2 = "Portland, OR 97219", Line3 = "", City = "Portland", State = "OR", Zipcode = "97219", Type = "Physical Address" },
+                new Address { AddressId = 6, ParkId = 4, Line1 = "Hulls Cove Visitor Center", Line2 = "Route 3", Line3 = "Bar Harbor, ME 04609", City = "Bar Harbor", State = "ME", Zipcode = "04609", Type = "Physical Address" }
             );
             builder.Entity<Fee>()
            .HasData(
@@ -50,8 +52,26 @@ namespace ParksApi.Models
                new Fee { FeeId = 5, ParkId = 2, Name = "Zion Annual Pass", Description = "Admits a single individual for one year from date of purchase", Cost = 50.00 },
                new Fee { FeeId = 6, ParkId = 1, Name = "Yellowstone Per Person", Description = "Good for single individual entry to Yellowstone for 7 days from date of purchase", Cost = 20.00 },
                new Fee { FeeId = 7, ParkId = 1, Name = "Yellowstone Annual Pass", Description = "Admits entrance to Yellowstone for one year. When travelling by snowcoach or shuttle, it admits the holder and up to 3 additional individuals", Cost = 70.00 },
-               new Fee { FeeId = 8, ParkId = 1, Name = "Yellowstone Annual Pass", Description = "Admits entrance to Yellowstone for one year. When travelling by snowcoach or shuttle, it admits the holder and up to 3 additional individuals", Cost = 70.00 }
+               new Fee { FeeId = 8, ParkId = 1, Name = "Yellowstone Annual Pass", Description = "Admits entrance to Yellowstone for one year. When travelling by snowcoach or shuttle, it admits the holder and up to 3 additional individuals", Cost = 70.00 },
+               new Fee { FeeId = 9, ParkId = 4, Name = "Acadia Private Vehicle, 7-day", Description = "Good for entry of private vehicle and all occupants to Yellowstone for 7 days from date of purchase", Cost = 30.00 },
+               new Fee { FeeId = 10, ParkId = 4, Name = "Acadia Per Person, 7-day", Description = "Admits a single individual with no car; includes bicyclists, hikers and pedestrians", Cost = 15.00 },
+               new Fee { FeeId = 11, ParkId = 4, Name = "Acadia Annual Pass", Description = "Admits a private vehicle and all passengers entry to Acadia. Valid for 12 months from purchase date", Cost = 55.00 }
            );
+
+            builder.Entity<LocalWildlife>()
+            .HasData(
+                new LocalWildlife{LocalWildlifeId = 1, AnimalId = 1, ParkId = 1},
+                new LocalWildlife { LocalWildlifeId = 2, AnimalId = 2, ParkId = 1 },
+                new LocalWildlife { LocalWildlifeId = 3, AnimalId = 3, ParkId = 1 },
+                new LocalWildlife { LocalWildlifeId = 4, AnimalId = 4, ParkId = 1 },
+                new LocalWildlife { LocalWildlifeId = 5, AnimalId = 3, ParkId = 3 },
+                new LocalWildlife { LocalWildlifeId = 6, AnimalId = 4, ParkId = 3 },
+                new LocalWildlife { LocalWildlifeId = 7, AnimalId = 3, ParkId = 2 },
+                new LocalWildlife { LocalWildlifeId = 8, AnimalId = 6, ParkId = 2 },
+                new LocalWildlife { LocalWildlifeId = 9, AnimalId = 5, ParkId = 4 },
+                new LocalWildlife { LocalWildlifeId = 10, AnimalId = 3, ParkId = 4 },
+                new LocalWildlife { LocalWildlifeId = 11, AnimalId = 4, ParkId = 4 }
+            );
         }
 
     }
