@@ -27,18 +27,18 @@ namespace ParksApi.Controllers
         }
 
         // GET api/animals/5
-        [HttpGet("{id:int}")]
-        public ActionResult<Animal> Get(int id)
+        [HttpGet("{animalId:int}")]
+        public ActionResult<Animal> Get(int animalId)
         {
-            Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.AnimalId == id);
+            Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.AnimalId == animalId);
             return thisAnimal;
         }
 
         // GET api/animals/5/parks
-        [HttpGet("{id:int}/parks")]
-        public ActionResult<IEnumerable<Park>> GetParks(int id)
+        [HttpGet("{animalId:int}/parks")]
+        public ActionResult<IEnumerable<Park>> GetParks(int animalId)
         {
-            List<int> parkIds = _db.LocalWildlife.Where(entry => entry.AnimalId == id).Select(entry => entry.ParkId).ToList();
+            List<int> parkIds = _db.LocalWildlife.Where(entry => entry.AnimalId == animalId).Select(entry => entry.ParkId).ToList();
             List<Park> parkList = _db.Parks.Where(park => parkIds.Contains(park.ParkId)).ToList();
             return parkList;
         }
@@ -66,19 +66,19 @@ namespace ParksApi.Controllers
 
 
         // PUT api/animals/5
-        [HttpPut("{id:int}")]
-        public void Put(int id, [FromBody] Animal animal)
+        [HttpPut("{animalId:int}")]
+        public void Put(int animalId, [FromBody] Animal animal)
         {
-            animal.AnimalId = id;
+            animal.AnimalId = animalId;
             _db.Entry(animal).State = EntityState.Modified;
             _db.SaveChanges();
         }
 
         // DELETE api/animals/5
-        [HttpDelete("{id:int}")]
-        public void Delete(int id)
+        [HttpDelete("{animalId:int}")]
+        public void Delete(int animalId)
         {
-            Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.AnimalId == id);
+            Animal thisAnimal = _db.Animals.FirstOrDefault(animal => animal.AnimalId == animalId);
             _db.Animals.Remove(thisAnimal);
             _db.SaveChanges();
         }
