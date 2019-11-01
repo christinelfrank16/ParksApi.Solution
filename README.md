@@ -43,11 +43,15 @@ dotnet run
 
 ## Useage Example
 * Complete full setup/installation instructions
-* In Swagger Home page, select a dropdown of choice (e.g. Parks)
-![picture]("img/swaggerHome.png")
+* In Swagger Home page, select a dropdown of choice (e.g. Animals)
+<img src="ParksApi/ref/swaggerHome.png" alt="Swagger Home Page" style="width:200px;display:block;margin-left:10px;margin-top:8px;"/>
 * Click on bar with the action name you want to try out
 * Click on the "Try it out!" button on the top right of the just-opened section
+<img src="ParksApi/ref/swaggerTryItOut.png" alt="Swagger Try It Out For GetAnimalsById" style="width:400px;display:block;margin-left:10px;margin-top:8px;"/>
 * Enter any required parameters and then click the blue "Execute" button just below the input(s) section
+* Scroll down to the Response Body section for your results! 
+  * Note the status code is displayed to the left of the Response Body section
+<img src="ParksApi/ref/swaggerResponse.png" alt="Swagger Response Results" style="width:400px;display:block;margin-left:-30px;margin-top:8px;"/>
 
 ## Known Bugs
 
